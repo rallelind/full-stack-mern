@@ -1,0 +1,50 @@
+.image-grid-skeleton {
+    --gap: 16px;
+    --num-cols: 4;
+    --row-height: 250px;
+    width: 90%;
+    margin-left: 5%;
+    
+    box-sizing: border-box;
+    padding: var(--gap);
+  
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: var(--row-height);
+    gap: var(--gap);
+    margin-bottom: 8%;
+  }
+  
+  .image-grid-skeleton > .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    background-color: #ddd;
+  }
+  
+  .skeleton-image-grid-col-2 {
+    grid-column: span 2;
+  }
+  
+  .skeleton-image-grid-row-2 {
+    grid-row: span 2;
+
+  }
+  
+  /* Anything udner 1024px */
+  @media screen and (max-width: 1024px) {
+    .image-grid {
+      --num-cols: 2;
+      --row-height: 200px;
+    }
+  }
+
+  .skeleton-title {
+    margin-left: 5%;
+    margin-top: 5%;
+    background-color: #ddd;
+    height: 32px;
+    width: 40%;
+    border-radius: 30px;
+  }

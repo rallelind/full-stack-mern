@@ -1,0 +1,135 @@
+
+
+#container {
+    display: block;
+    width: 100%;
+    margin: 4%;
+  }
+  
+  .IMG {
+      height: 425px;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    float: left;
+    margin: 1px;
+    padding: 10px 15px;
+    width: 400px;
+    height: 600px;
+    justify-content: space-around;
+    margin: 1.5%;
+    margin-bottom: 10%;
+    text-align: center;
+  }
+
+  .vansSlider {
+    height: 400px;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  /*first element*/
+  
+  .container .card:first-child {
+    margin-left: 0;
+  }
+  
+  
+  /*last element of the first row*/
+  
+  .container .card:nth-child(5n) {
+    margin-right: 0;
+  }
+  
+  
+  /*first-element of the 2nd row*/
+  
+  .container .card:nth-child(5n+1) {
+    margin-left: 0;
+  }
+  
+  
+  /*last element*/
+  
+  .container .card:last-child {
+    margin-right: 0;
+  }
+
+.column2 {
+    display: inline-block;
+}
+
+
+.jensImg {
+    height: 700px;
+    width: 550px;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+#firstText {
+    background-color: white;
+    width: 350px;
+    padding: 2%;
+    position: absolute;
+    bottom: 250px;
+    left: 35%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    float: right;
+}
+
+.jensSurf {
+    height: 700px;
+    width: 600px;
+    float: right;
+    margin-top: 1%;
+    margin-right: 5%;
+}
+
+.footer{
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgb(235, 195, 64);
+    clear: both;
+    position: relative;    
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  #copyright {
+    text-align: center;
+  }
+
+  .icons {
+    margin: 2%;
+    font-size: 40px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .footerEle {
+    margin: 2%;
+  }
+
+  .surf1 {
+    height: 500px;
+    width: 600px;
+    margin: 2%;
+  }
+
+  .username {
+    color: white;
+    margin-right: 2%;
+  }
+
+  .slick-dots {
+    height: 80px;
+  }
+
+  .slick-next {
+    right: 25px; 
+  }

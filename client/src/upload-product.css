@@ -1,0 +1,29 @@
+#form-group {
+    float: right;
+    width: 50%;
+    margin-right: 4%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.IMG3 {
+    height: 600px;
+    float: left;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-top: 10%;
+    margin-left: 4%;
+    border-radius: 25px;
+}
+
+.submitbtn {
+    text-align: center;
+}
+
+.formControl {
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);
+    border-radius: 25px;
+}
+
+.calender {
+    text-align: center;
+}
