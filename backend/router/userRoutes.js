@@ -56,4 +56,9 @@ router.get("/profile/product", async (req, res) => {
     res.status(200).json({userProduct})
 })
 
+router.post("/logout", (req, res) => {
+    req.logout();
+    res.json({message: "logged out"})
+})
+
 module.exports = router;
