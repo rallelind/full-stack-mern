@@ -78,7 +78,7 @@ const Dashboard = () => {
                     </div>
                     ))}
             </div>
-            {Products.length === 0 && <div style={{textAlign: "center", marginTop: "12%"}}><img style={{height: "150px", borderRadius: "30px"}} src={vanLoad} /></div>}
+            {Products.length === 0 && <div style={{textAlign: "center", marginTop: "12%"}}><img style={{height: "150px", borderRadius: "30px"}} src={vanLoad} alt="loading skeleton" /></div>}
         </div>
     )
 }

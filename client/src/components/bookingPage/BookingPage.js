@@ -25,7 +25,7 @@ const BookingPage = () => {
         let timeDiff = Math.abs(location.state.value[0].getTime() - location.state.value[1].getTime())
         let price = location.state.product.map(product => product.price)
         setPriceForStay(Math.ceil(timeDiff / (1000 * 3600 * 24)) * price)
-    })
+    }, [location.state.value, location.state.product])
 
 
     
@@ -68,7 +68,7 @@ const BookingPage = () => {
                 {location.state.product.map((product, i) => (
                 <>
                     <div className="productBookInfo">
-                        <img className="productBookImg" src={`http://localhost:4000/${product.images[0]}`} />
+                        <img className="productBookImg" src={`http://localhost:4000/${product.images[0]}`} alt="imageofvan" />
                         <div>
                             <h5>{product.title}</h5>
                             <h6>{product.price} dkk / nat</h6>
@@ -108,7 +108,6 @@ const BookingPage = () => {
                             <Input
                                 icon={<MdMail />}
                                 placeholder="Your email"
-                                radius="xs"
                                 radius="lg"
                                 size="md"
                                 onChange={e => setLoginUsername(e.target.value)}
@@ -117,7 +116,6 @@ const BookingPage = () => {
                             <Input
                                 icon={<RiLockPasswordFill />}
                                 placeholder="Your password"
-                                radius="xs"
                                 radius="lg"
                                 size="md"
                                 onChange={e => setLoginPassword(e.target.value)}
