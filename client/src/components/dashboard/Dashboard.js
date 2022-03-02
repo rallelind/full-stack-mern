@@ -39,8 +39,8 @@ const Dashboard = () => {
             <div>   
                 <div className="filterByFeatures">
                     <h3>Filter Vans By Features</h3>
-                    <Chips 
-                        multiple 
+                    <Chips  
+                        multiple
                         color="grape" 
                         variant="filled" 
                         size="md" 
@@ -67,7 +67,13 @@ const Dashboard = () => {
                         </Link>
                     </div>
                     :
-                    features.includes("shower") && product.shower === true &&
+                    (
+                    features.includes("shower") && product.shower === true ||
+                    features.includes("stove") && product.stove === true ||
+                    features.includes("kitchen") && product.stove === true ||
+                    features.includes("surf") && product.stove === true
+                    )
+                    &&            
                     <div className="containerD" key={i}>
                         <Link to={`/productpage/${product._id}`}>
                             <div key={i} className="cardD">
@@ -76,7 +82,7 @@ const Dashboard = () => {
                             </div>
                         </Link>
                     </div>
-                    ))}
+                ))}
             </div>
             {Products.length === 0 && <div style={{textAlign: "center", marginTop: "12%"}}><img style={{height: "150px", borderRadius: "30px"}} src={vanLoad} alt="loading skeleton" /></div>}
         </div>

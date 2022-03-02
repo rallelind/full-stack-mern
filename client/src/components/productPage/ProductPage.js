@@ -131,7 +131,7 @@ export const ProductPage = () => {
                     >
                         <Modal.Header closeButton>
                         <Modal.Title id="example-custom-modal-styling-title">
-                            Custom Modal Styling
+                            Description of the vehicle
                         </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
