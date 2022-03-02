@@ -119,7 +119,7 @@ export const ProductPage = () => {
                 </div>
                 <div className="containerDescription">
                     <h3>Description Of The Vehicle</h3>
-                    <p>{product.description}</p>
+                    <p>{product.description.length > 200 ? `${product.description.substring(0, 200)}...`: <p>{product.description}</p>}</p>                  
                     <Button id="readMoreBtn" onClick={()=> setShow(true)} color="grape" radius="lg">
                         Read More
                     </Button>
