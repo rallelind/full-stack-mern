@@ -3,18 +3,15 @@ import "../../upload-product.css";
 import "../utils/FileUpload"
 import FileUpload from '../utils/FileUpload';
 import Axios from 'axios';
-import Surf3 from "../../imgs/surf3.png"
 import Header from '../header/Header';
 import { useNavigate } from "react-router-dom";
-import {
-    DateRangePicker,
-    isInclusivelyBeforeDay
-  } from "react-dates";
+import { DateRangePicker, isInclusivelyBeforeDay } from "react-dates";
+import moment from "moment";
+import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
+import { Checkbox, Textarea, Input, Button } from '@mantine/core';
+import TimelineProduct from './TimelineProduct';
 
-  import moment from "moment";
-    
-  import "react-dates/initialize";
-  import "react-dates/lib/css/_datepicker.css";
 
 
 
@@ -35,8 +32,8 @@ const UploadProduct = (props) => {
     const [shower, setShower] = useState(false)
     const [waterTanks, setWaterTanks] = useState(false)
     const [waterSystem, setWaterSystem] = useState(false)
-
-
+    const [show, setShow] = useState("start")
+    const [active, setActive] = useState(0)
 
 
     useEffect(() => {
@@ -51,8 +48,11 @@ const UploadProduct = (props) => {
         })
     }, [])
 
+
+
     const onTitleChange = (e) => {
         setTitleValue(e.currentTarget.value)
+        
     }
 
     const onDescreptionChange = (e) => {
@@ -70,56 +70,104 @@ const UploadProduct = (props) => {
     
     const navigate = useNavigate()
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-
-        if (!TitleValue || !DescriptionValue || !PriceValue || !Images || !startDate || !endDate) {
-            alert("Please Fill Out All Info")
+    const navigateUploadProduct = (e) => {
+        e.preventDefault()
+        if (show === "start") {
+            if (Images.length >= 5) { 
+                setShow("pick a date")
+                setActive(1)
+            }
         }
-
-        if (Images.length < 5) {
-            alert("you most post 5 images")
+        if (show === "pick a date") {
+            if(startDate && endDate) {
+                setShow("pick a title")
+                setActive(2)
+            }
         }
-
-        else Axios({
-            method: "POST",
-            data: {
-                user: data._id,
-                title: TitleValue,
-                description: DescriptionValue,
-                price: PriceValue,
-                images: Images,
-                startdate: startDate,
-                enddate: endDate,
-                fridge: fridge,
-                stove: stove,
-                kitchen: kitchen,
-                shower: shower,
-                waterTanks: waterTanks,
-                waterSystem: waterSystem,
-            },
-            withCredentials: true,
-            url: "http://localhost:4000/api/product/uploadProduct",
-        }).then((res) => { 
-            console.log(res)
-            navigate("/dashboard")
-        })
+        if (show === "pick a title") {
+            if(TitleValue.length > 1) {
+                setShow("pick a description")
+                setActive(3)
+            }
+        }
+        if (show === "pick a description") {
+            if(DescriptionValue.length > 1) {
+                setShow("pick a price")
+                setActive(4)  
+            }
+        }
+        if (show === "pick a price") {
+            if(PriceValue > 1) {
+                setShow("pick features")
+                setActive(5)
+            }
+        }
+        if (show === "pick features") {
+            Axios({
+                method: "POST",
+                data: {
+                    user: data._id,
+                    title: TitleValue,
+                    description: DescriptionValue,
+                    price: PriceValue,
+                    images: Images,
+                    startdate: startDate,
+                    enddate: endDate,
+                    fridge: fridge,
+                    stove: stove,
+                    kitchen: kitchen,
+                    shower: shower,
+                    waterTanks: waterTanks,
+                    waterSystem: waterSystem,
+                },
+                withCredentials: true,
+                url: "http://localhost:4000/api/product/uploadProduct",
+            }).then((res) => { 
+                console.log(res)
+                navigate("/dashboard")
+            })
+        }
     }
 
+    const goBackButton = (e) => {
+        if (show === "pick a date") {
+            setShow("start")
+            setActive(0)
+        }
+        if (show === "pick a title") {
+            setShow("pick a date")
+            setActive(1)
+        }
+        if (show === "pick a description") {
+            setShow("pick a title")
+            setActive(2)
+        }
+        if (show === "pick a price") {
+            setShow("pick a description")
+            setActive(3)  
+        }
+        if (show === "pick features") {
+            setShow("pick a price")
+            setActive(4)
+        }
+    }
 
     return (
         <div>
             <Header />
-            <img src={Surf3} alt="beach" className="IMG3" />
-            <form onSubmit={onSubmit} className="form-group" id="form-group"> 
-            <h1>Upload Van</h1>
-
+            <TimelineProduct 
+                active={active}
+            />
+            <form className="form-group" id="form-group"> 
+        
+            <h1 className="uploadTitle">Upload Van</h1>
+            {show === "start" &&
                 <FileUpload 
                     refreshFunction={updateImages}
+                    
                 />
-
-                <br />
-                <br />
+            }
+            {show === "pick a date" &&
                 <div className="calender">
                 <DateRangePicker
                         startDate={startDate}
@@ -137,40 +185,48 @@ const UploadProduct = (props) => {
                         orientation={"vertical"}
                     />
                 </div>
-                <br />
-                <br />
+            }
+            {show === "pick a title" &&
+                <>
                 <label>Title</label>
-                <input
-                    className="form-control formControl"
+                <Input
+                    className="formControl"
                     onChange={onTitleChange}
                     value={TitleValue}
                 />
-                
-                <br />
-                <br />
+                </>
+            }
+            {show === "pick a description" &&
+                <>
                 <label>Description</label>
-                <textarea 
-                    className="form-control formControl"
+                <Textarea 
                     onChange={onDescreptionChange}
                     value={DescriptionValue}
                 />
-
-                <br />
-                <br />
+                </>
+            }
+            {show === "pick a price" &&
+            <>
                 <label>Price</label>
-                <input
-                    className="form-control formControl"
+                <Input
+                    className="formControl"
                     onChange={onPriceChange}
                     value={PriceValue}
                     type="number"
                 />
-
-                <br />
-                <br />
-                
+            </>
+            }
+            {show === "pick features" &&
+            <>
                 <h2>Included Features</h2>
-                <h5>Fridge</h5>
-                <input type="checkbox" onChange={(e) => setFridge(e.target.checked)} />
+                <Checkbox 
+                    type="checkbox" 
+                    onChange={(e) => setFridge(e.target.checked)} 
+                    color="grape"
+                    radius="md"
+                    size="md"
+                    label="Fridge"
+                />
                 <h5>Stove</h5>
                 <input type="checkbox" onChange={(e) => setStove(e.target.checked)} />
                 <h5>Kitchen</h5>
@@ -181,16 +237,25 @@ const UploadProduct = (props) => {
                 <input type="checkbox" onChange={(e) => setWaterTanks(e.target.checked)} />
                 <h5>Water System</h5>
                 <input type="checkbox" onChange={(e) => setWaterSystem(e.target.checked)} />
-
-                <br />
-                <br />
-                <div className="submitbtn">
-                    <button
-                        onClick={onSubmit}
-                        className="btn btn-primary btn-submit"
+                </>
+            }
+                <div className="navigateUploadProduct">
+                    {show === "start" ? null : 
+                    <Button 
+                        variant="white" 
+                        color="grape"
+                        onClick={goBackButton}
                     >
-                        Submit
-                    </button>
+                        Go Back
+                    </Button>
+                    }
+                    <Button variant="gradient" gradient={{ from: 'grape', to: 'pink', deg: 35 }}
+                        onClick={navigateUploadProduct}
+                        radius="lg" 
+                        size="md"
+                    >
+                        {show !== "pick features" ? <>Next</> : <>Submit Van</>}
+                    </Button>
                 </div>
             </form>
         </div>

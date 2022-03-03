@@ -3,6 +3,8 @@ import Dropzone from "react-dropzone"
 import { FaPlus } from "react-icons/fa";
 import Axios from "axios"
 import { useState } from 'react';
+import { FcAddImage } from "react-icons/fc"
+import { Text } from '@mantine/core';
 
 
 const FileUpload = (props) => {
@@ -50,23 +52,23 @@ const FileUpload = (props) => {
             >
                 {({ getRootProps, getInputProps }) => (
                     <div style={{
-                        width: '300px', height: '240px', border: '1px solid lightgray',
+                        width: '300px', height: '240px', border: '3px dotted lightgray',
                         display: 'flex', alignItems: 'center', justifyContent: 'center'
                     }}
                         {...getRootProps()}
                     >
-                        {console.log('getRootProps', { ...getRootProps() })}
-                        {console.log('getInputProps', { ...getInputProps() })}
                         <input {...getInputProps()} />
-                        <FaPlus  type="plus" style={{ fontSize: '3rem' }} />
+                        <FcAddImage  type="plus" style={{ fontSize: '4rem' }} />
 
                     </div>
                 )}
             </Dropzone>
             
 
-            <div style={{ display: 'flex', width: '350px', height: '240px', overflowX: 'scroll', border: '1px solid lightgray'}}>
-
+            <div style={{ display: 'flex', width: '350px', height: '240px', overflowX: 'scroll', border: '3px dotted lightgray'}}>
+                <div style={{height: "auto", margin: "0 auto", padding: "10px", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    {Images.length === 0 && <Text color="dimmed" style={{textAlign: "center"}}>View images here. <br/> Click them to delete.</Text>}
+                </div>
                 {Images.map((image, index) => (
                     <div key={index} onClick={() => onDelete(image)}>
                         <img style={{ minWidth: '300px', width: '300px', height: '240px'}} src={`http://localhost:4000/${image}`} alt={`productImg-${index}`} />

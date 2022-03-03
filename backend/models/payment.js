@@ -8,5 +8,14 @@ const paymentSchema = new mongoose.Schema({
     product:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product'
+    },
+    startdate: {
+        type: Date
+    },
+    enddate: {
+        type: Date
+    },
+    price: {
+        type: Number
     }
 })
