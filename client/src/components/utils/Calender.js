@@ -17,16 +17,16 @@ const Calender = () => {
     return (
         <div id="calender">
                 <DatePicker
-        id="dateStartEnd"
-        selectsRange={true}
-        startDate={dateStart}
-        endDate={dateEnd}
-        onChange={onChangeHandler}
-        dateFormat="dd MMM yyyy"
-        className={'form-control form-control-sm'}
-        showDisabledMonthNavigation
-        placeholderText="Pick A Date"
-    />
+                    id="dateStartEnd"
+                    selectsRange={true}
+                    startDate={dateStart}
+                    endDate={dateEnd}
+                    onChange={onChangeHandler}
+                    dateFormat="dd MMM yyyy"
+                    className={'form-control form-control-sm'}
+                    showDisabledMonthNavigation
+                    placeholderText="Pick A Date"
+                />
         </div>
     )
 }

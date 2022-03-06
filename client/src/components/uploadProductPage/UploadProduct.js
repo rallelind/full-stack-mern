@@ -9,11 +9,8 @@ import { DateRangePicker, isInclusivelyBeforeDay } from "react-dates";
 import moment from "moment";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import { Checkbox, Textarea, Input, Button } from '@mantine/core';
+import { Checkbox, Textarea, Input, Button, Text } from '@mantine/core';
 import TimelineProduct from './TimelineProduct';
-
-
-
 
 
 const UploadProduct = (props) => {
@@ -47,8 +44,6 @@ const UploadProduct = (props) => {
             console.log(res.data)
         })
     }, [])
-
-
 
     const onTitleChange = (e) => {
         setTitleValue(e.currentTarget.value)
@@ -124,7 +119,7 @@ const UploadProduct = (props) => {
                 url: "http://localhost:4000/api/product/uploadProduct",
             }).then((res) => { 
                 console.log(res)
-                navigate("/dashboard")
+                navigate("/profilepage")
             })
         }
     }
@@ -169,6 +164,7 @@ const UploadProduct = (props) => {
             }
             {show === "pick a date" &&
                 <div className="calender">
+                <Text color="dimmed">Pick the dates you wish to rent out your van</Text>
                 <DateRangePicker
                         startDate={startDate}
                         startDateId="startDate"
@@ -189,6 +185,7 @@ const UploadProduct = (props) => {
             {show === "pick a title" &&
                 <>
                 <label>Title</label>
+                <Text color="dimmed">Pick a awesome title for your amazing van</Text>
                 <Input
                     className="formControl"
                     onChange={onTitleChange}
@@ -199,6 +196,7 @@ const UploadProduct = (props) => {
             {show === "pick a description" &&
                 <>
                 <label>Description</label>
+                <Text color="dimmed">Write a description for the van. Be concise and interesting.</Text>
                 <Textarea 
                     onChange={onDescreptionChange}
                     value={DescriptionValue}
@@ -218,29 +216,67 @@ const UploadProduct = (props) => {
             }
             {show === "pick features" &&
             <>
-                <h2>Included Features</h2>
+            <h3>Pick Features</h3>
+            <div className="grid-container">
                 <Checkbox 
                     type="checkbox" 
                     onChange={(e) => setFridge(e.target.checked)} 
                     color="grape"
                     radius="md"
-                    size="md"
+                    size="xl"
                     label="Fridge"
+                    className="grid-item"
                 />
-                <h5>Stove</h5>
-                <input type="checkbox" onChange={(e) => setStove(e.target.checked)} />
-                <h5>Kitchen</h5>
-                <input type="checkbox" onChange={(e) => setKitchen(e.target.checked)} />
-                <h5>Shower</h5>
-                <input type="checkbox" onChange={(e) => setShower(e.target.checked)} />
-                <h5>Water Tanks</h5>
-                <input type="checkbox" onChange={(e) => setWaterTanks(e.target.checked)} />
-                <h5>Water System</h5>
-                <input type="checkbox" onChange={(e) => setWaterSystem(e.target.checked)} />
+                <Checkbox 
+                    type="checkbox" 
+                    onChange={(e) => setStove(e.target.checked)} 
+                    color="grape"
+                    radius="md"
+                    size="xl"
+                    label="Stove"
+                    className="grid-item"
+                />
+                <Checkbox 
+                    type="checkbox" 
+                    onChange={(e) => setKitchen(e.target.checked)} 
+                    color="grape"
+                    radius="md"
+                    size="xl"
+                    label="Kitchen"
+                    className="grid-item"
+                />
+                <Checkbox 
+                    type="checkbox" 
+                    onChange={(e) => setShower(e.target.checked)} 
+                    color="grape"
+                    radius="md"
+                    size="xl"
+                    label="Shower"
+                    className="grid-item"
+                />
+                <Checkbox 
+                    type="checkbox" 
+                    onChange={(e) => setWaterTanks(e.target.checked)} 
+                    color="grape"
+                    radius="md"
+                    size="xl"
+                    label="Water Tanks"
+                    className="grid-item"
+                />
+                <Checkbox 
+                    type="checkbox" 
+                    onChange={(e) => setWaterSystem(e.target.checked)} 
+                    color="grape"
+                    radius="md"
+                    size="xl"
+                    label="Water System"
+                    className="grid-item"
+                />
+                </div>
                 </>
             }
                 <div className="navigateUploadProduct">
-                    {show === "start" ? null : 
+                    {show === "start" ? <div></div> : 
                     <Button 
                         variant="white" 
                         color="grape"

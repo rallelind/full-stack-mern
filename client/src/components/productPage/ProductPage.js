@@ -16,6 +16,7 @@ import { RangeCalendar, DateRangePicker } from '@mantine/dates';
 import Modal from 'react-bootstrap/Modal';
 import dayjs from "dayjs";
 import SkeletonUploadProduct from '../../skeletons/SkeletonUploadProduct';
+import ImageGallery from "../utils/ImageGallery";
 
 
 export const ProductPage = () => {
@@ -65,13 +66,7 @@ export const ProductPage = () => {
             {product.map((product, i) => (
             <div key={i}>
                 <h1 className="title">{product.title}</h1>
-                <div className="image-grid">
-                    <img className="image-grid-col-2 image-grid-row-2" src={`http://localhost:4000/${product.images[0]}`} alt="van"/>
-                    <img src={`http://localhost:4000/${product.images[1]}`} alt="architecture" />
-                    <img src={`http://localhost:4000/${product.images[2]}`} alt="architecture" />
-                    <img src={`http://localhost:4000/${product.images[3]}`} alt="architecture" />
-                    <img src={`http://localhost:4000/${product.images[4]}`} alt="architecture" />
-                </div>
+                <ImageGallery image={product.images} />
                 <div className="containerBook">
                     {value ? <><h3>{product.price} kr / nat</h3></> : <><h3>Pick Dates To See Price</h3></>}
                     <div className="bookFeatures">
@@ -120,9 +115,11 @@ export const ProductPage = () => {
                 <div className="containerDescription">
                     <h3>Description Of The Vehicle</h3>
                     <p>{product.description.length > 200 ? `${product.description.substring(0, 200)}...`: <p>{product.description}</p>}</p>                  
+                    {product.description.length > 200 &&
                     <Button id="readMoreBtn" onClick={()=> setShow(true)} color="grape" radius="lg">
                         Read More
                     </Button>
+                    }
                     <Modal
                         show={show}
                         onHide={() => setShow(false)}

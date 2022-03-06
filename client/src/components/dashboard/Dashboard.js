@@ -33,6 +33,7 @@ const Dashboard = () => {
             })
     },[])
 
+
     return (
         <div>
             <Header />
@@ -57,23 +58,6 @@ const Dashboard = () => {
                 </div>
 
                 {Products.map((product, i) => (
-                    features.length === 0 ?
-                    <div className="containerD" key={i}>
-                        <Link to={`/productpage/${product._id}`}>
-                            <div key={i} className="cardD">
-                                <ImageSlider className="IMGD" images={product.images} />
-                                <h6>{product.price} DKK / nat</h6>
-                            </div>
-                        </Link>
-                    </div>
-                    :
-                    (
-                    features.includes("shower") && product.shower === true ||
-                    features.includes("stove") && product.stove === true ||
-                    features.includes("kitchen") && product.stove === true ||
-                    features.includes("surf") && product.stove === true
-                    )
-                    &&            
                     <div className="containerD" key={i}>
                         <Link to={`/productpage/${product._id}`}>
                             <div key={i} className="cardD">
