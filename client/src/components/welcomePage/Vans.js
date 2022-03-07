@@ -31,17 +31,19 @@ const Vans = () => {
                 <ImageSlider className="vansSlider" images={product.images} />
                 <h2>{product.title}</h2>
                 <p>{product.description.length > 100 ? `${product.description.substring(0, 100)}...`: <p>{product.description}</p>}</p>
-                <Button 
-                    color="grape" 
-                    radius="md" 
-                    size="md"
-                    onClick={() => {
-                        let path = `/productpage/${product._id}`;
-                        navigate(path)
-                    }}
-                >
-                    Check Availability
-                </Button>
+                <div>
+                    <Button 
+                        color="grape" 
+                        radius="md" 
+                        size="md"
+                        onClick={() => {
+                            let path = `/productpage/${product._id}`;
+                            navigate(path)
+                        }}
+                    >
+                        Check Availability
+                    </Button>
+                </div>
             </div>
             ))}
         </div>

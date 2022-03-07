@@ -1,9 +1,12 @@
 
 
 #container {
-    display: block;
-    width: 100%;
-    margin: 4%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 2rem;
+    width: 90%;
+    margin: 5%;
   }
   
   .IMG {
@@ -12,13 +15,8 @@
 
   .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    float: left;
-    margin: 1px;
-    padding: 10px 15px;
-    width: 400px;
-    height: 600px;
-    justify-content: space-around;
-    margin: 1.5%;
+    width: 100%;
+    height: 625px;
     margin-bottom: 10%;
     text-align: center;
   }
@@ -26,35 +24,8 @@
   .vansSlider {
     height: 400px;
     width: 100%;
-    border-radius: 5px;
-  }
-  
-  /*first element*/
-  
-  .container .card:first-child {
-    margin-left: 0;
-  }
-  
-  
-  /*last element of the first row*/
-  
-  .container .card:nth-child(5n) {
-    margin-right: 0;
-  }
-  
-  
-  /*first-element of the 2nd row*/
-  
-  .container .card:nth-child(5n+1) {
-    margin-left: 0;
-  }
-  
-  
-  /*last element*/
-  
-  .container .card:last-child {
-    margin-right: 0;
-  }
+  }  
+
 
 .column2 {
     display: inline-block;

@@ -5,7 +5,6 @@ const passport = require("passport");
 const User = require("../models/user");
 const Product = require("../models/product")
 const session = require("express-session");
-const user = require("../models/user");
 
 
 
@@ -52,7 +51,7 @@ router.get("/user", (req, res) => {
 
 router.get("/profile/product", async (req, res) => {
     const userProduct = await Product.find({ user: req.user._id })
-
+    
     res.status(200).json({userProduct})
 })
 

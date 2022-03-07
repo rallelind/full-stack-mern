@@ -81,7 +81,6 @@ const ProfilePage = () => {
                     <div className="containerD" key={i}>
                         <div key={i} className="cardD">
                             <TiDelete onClick={() => setModalShow(true)} style={{cursor: "pointer"}} className="deleteIcon" size={40} color="red" />
-                            <BiEdit className="editIcon" size={40} color="blue" />
                             <Modal
                                 size="sm"
                                 aria-labelledby="contained-modal-title-vcenter"

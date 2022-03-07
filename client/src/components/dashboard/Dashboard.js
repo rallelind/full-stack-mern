@@ -33,6 +33,14 @@ const Dashboard = () => {
             })
     },[])
 
+    const filterByFeatures = (props) => {
+        if(features.length === 1) {
+            if(features.includes("stove") && props.stove === true) return true;
+            if(features.includes("shower") && props.shower === true) return true;
+            if(features.includes("surf") && props.surf === true) return true;
+            if(features.includes("kitchen") && props.kitchen === true) return true;
+        }
+    }
 
     return (
         <div>
@@ -58,6 +66,16 @@ const Dashboard = () => {
                 </div>
 
                 {Products.map((product, i) => (
+                    filterByFeatures(product) === true ?
+                    <div className="containerD" key={i}>
+                        <Link to={`/productpage/${product._id}`}>
+                            <div key={i} className="cardD">
+                                <ImageSlider className="IMGD" images={product.images} />
+                                <h6>{product.price} DKK / nat</h6>
+                            </div>
+                        </Link>
+                    </div>
+                    : features.length === 0 &&
                     <div className="containerD" key={i}>
                         <Link to={`/productpage/${product._id}`}>
                             <div key={i} className="cardD">

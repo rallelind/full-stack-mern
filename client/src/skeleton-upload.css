@@ -34,7 +34,7 @@
   
   /* Anything udner 1024px */
   @media screen and (max-width: 1024px) {
-    .image-grid {
+    .image-grid-skeleton {
       --num-cols: 2;
       --row-height: 200px;
     }
