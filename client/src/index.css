@@ -13,12 +13,28 @@
       height: 425px;
   }
 
+  .img-container-welcomepage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 4rem;
+    margin-left: 5%;
+    margin-top: 2%;
+    width: 90%;
+  }
+
+  .img-welcomepage {
+    height: 700px;
+    width: 100%;
+  }
+
   .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     width: 100%;
-    height: 625px;
+    height: 95%;
     margin-bottom: 10%;
     text-align: center;
+    
   }
 
   .vansSlider {
@@ -26,37 +42,22 @@
     width: 100%;
   }  
 
+  #firstText {
+      width: 300px;
+      height: 375px;
+      background-color: white;
+      padding: 1.5%;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate( -50%, -50% );
+    }
 
-.column2 {
-    display: inline-block;
-}
+    .welcomeText {
+      font-size: 1rem;
+    }
 
-
-.jensImg {
-    height: 700px;
-    width: 550px;
-    margin-left: 10%;
-    margin-top: 2%;
-}
-
-#firstText {
-    background-color: white;
-    width: 350px;
-    padding: 2%;
-    position: absolute;
-    bottom: 250px;
-    left: 35%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    float: right;
-}
-
-.jensSurf {
-    height: 700px;
-    width: 600px;
-    float: right;
-    margin-top: 1%;
-    margin-right: 5%;
-}
 
 .footer{
     margin-top: 1rem;
@@ -103,4 +104,33 @@
 
   .slick-next {
     right: 25px; 
+  }
+
+  @media (max-width: 575.98px) {
+    .img-welcomepage {
+      height: 350px;
+    }
+    #container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .card {
+      height: 95%;
+      width: 60%;
+      margin-left: 20%;
+    }
+    .vansSlider {
+      height: 250px;
+    }
+    .welcomeText {
+      font-size: 0.8rem;
+    }
+    #firstText {
+      width: 200px;
+      height: 325px;
+      top: 33%;
+    }
+    .welcome-page-btn {
+      height: 30px;
+      width: 100%;
+    }
   }

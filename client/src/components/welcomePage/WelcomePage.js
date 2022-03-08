@@ -19,34 +19,28 @@ const WelcomePage = () => {
     return (
         <div>
             <Header />
-            <div className="column2">
-                <img alt="jens" src={Jens} className="jensImg" />
+            <div className="img-container-welcomepage">
+                <img alt="jens" src={Jens} className="img-welcomepage" />
+                <img alt="jens surf" src={JensSurf} className="img-welcomepage" />
             </div>
-            <img alt="jens surf" src={JensSurf} className="jensSurf" />
-            <div className="column2">
-                <div id="firstText">
-                <h1 className="welcomeText">Tired of everyday life?</h1>
+            <div id="firstText">
+                <h3>Tired of everyday life?</h3>
                 <p className="welcomeText">
                     Do like Jens and live out of a van. We make it easy for you to rent a 
-                    <br/>
                     livable van. You might ask "but for how long?". To that we say as long
-                    <br/>
-                    as you wish. For a week, a day, or a month. You decide.
-                    <br/> 
-                    Sign up today and view when you can have a great experience. 
-                    <br/>
-                    <br/>
+                    as you wish. For a week, a day, or a month. You decide. <br/>
+                    Sign up today and view when you can have a great experience.  
+                </p>
                     <Button 
                         text="Start Living"
                         onClick={routeChange}
                         color="grape" 
                         size="md"
+                        className="welcome-page-btn"
                     >
                         Start Living
                     </Button>
-                </p>
                 </div>
-            </div>
             <Vans />
             <Footer />
         </div>
